@@ -8,7 +8,8 @@ class Point():
         print("Point constructor")
 
     def ToString(self):
-        return "{X:" +  str(self.x) + ",Y:" + str(self.y) + "}"
+        return "{X:" + str(self.x) + ",Y:" + str(self.y) + "}"
+
 
 class Circle(Point):
     radius = 0.0
@@ -18,12 +19,14 @@ class Circle(Point):
         self.radius = radius
         print("Circle constructor")
 
+    # 挑战3
     def CalcCircum(self):
         PI = 3.14159
-        return 2*PI*self.radius;
+        return 2 * PI * self.radius;
 
     def ToString(self):
         return super().ToString() + ",{RADIUS=" + str(self.radius) + "}"
+
 
 class Size():
     width = 0.0
@@ -37,19 +40,22 @@ class Size():
     def ToString(self):
         return "{WIDTH=" + str(self.width) + ",HEIGHT=" + str(self.height) + "}"
 
+
 class Rectangle(Point, Size):
     def __init__(self, x, y, width, height):
         Point.__init__(self, x, y)
         Size.__init__(self, width, height)
         print("Rectangle constructor")
 
-
+    # 挑战2
     def CalcArea(self):
         return self.width * self.height
 
     def ToString(self):
         return Point.ToString(self) + "," + Size.ToString(self)
 
+
+# 挑战1
 class Ellipse(Point):
     # Horizontal radius
     h_radius = 0.0
@@ -63,7 +69,7 @@ class Ellipse(Point):
 
     def ToString(self):
         return Point.ToString(self) + "{HORIZAONTAL RADIUS=" + str(self.h_radius) + \
-                ",VERTICAL RADIUS=" + str(self.v_radius) + "}"
+               ",VERTICAL RADIUS=" + str(self.v_radius) + "}"
 
 
 p = Point(10, 20)
@@ -80,5 +86,5 @@ r = Rectangle(200, 250, 40, 50)
 print(r.ToString())
 print(r.CalcArea())
 
-e = Ellipse(0,0,50,80)
+e = Ellipse(0, 0, 50, 80)
 print(e.ToString())
