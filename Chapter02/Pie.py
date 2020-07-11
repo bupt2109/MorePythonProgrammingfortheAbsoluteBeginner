@@ -1,3 +1,5 @@
+# P30-33 Pie游戏
+# 学习怎么进行按键交互，是第一个真正意义上的游戏
 import math
 import pygame
 import sys

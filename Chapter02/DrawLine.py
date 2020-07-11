@@ -1,3 +1,4 @@
+# P28 画直线
 import pygame
 import sys
 

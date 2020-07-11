@@ -1,3 +1,4 @@
+# P26 画蓝底黄圆
 import pygame
 import sys
 from pygame.locals import *

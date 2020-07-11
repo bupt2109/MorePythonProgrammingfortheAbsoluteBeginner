@@ -1,3 +1,4 @@
+# P24 显示蓝底白字的Hello Pygame
 import pygame
 import sys
 from pygame.locals import *
