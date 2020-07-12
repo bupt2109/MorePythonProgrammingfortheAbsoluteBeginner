@@ -1,3 +1,4 @@
+# P39-41 输入问题，将答案串在一起编一个故事
 print("MAD LIB GAME")
 print("Enter answers to the following prompts\n")
 
