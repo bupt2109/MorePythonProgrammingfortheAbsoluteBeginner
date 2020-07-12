@@ -60,7 +60,7 @@ seconds = 3
 
 while True:
     for event in pygame.event.get():
-        if event == QUIT:
+        if event.type == QUIT:
             sys.exit()
         elif event.type == MOUSEMOTION:
             mouse_x, mouse_y = event.pos

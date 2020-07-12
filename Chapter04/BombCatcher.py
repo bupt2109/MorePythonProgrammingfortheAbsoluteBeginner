@@ -1,28 +1,30 @@
-import sys
-import pygame
-import random
-
+# Bomb Catcher Game
+# Chapter 4
+import sys, pygame, random
 from pygame.locals import *
 
 
-def print_text(font, x, y, text, color=(255,255,255)):
-    imgText = font.render(text,True, color)
-    screen.blit(imgText, (x,y))
+def print_text(font, x, y, text, color=(255, 255, 255)):
+    imgText = font.render(text, True, color)
+    screen.blit(imgText, (x, y))
 
-def draw_circle(x, y, radius, width = 0):
-    pygame.draw.circle(screen, black, (x-4,int(y)-4), radius, width)
-    pygame.draw.circle(screen, yellow, (x,int(y)), radius, width)
+
+def draw_circle(x, y, radius, width=0):
+    pygame.draw.circle(screen, black, (x - 4, int(y) - 4), radius, width)
+    pygame.draw.circle(screen, yellow, (x, int(y)), radius, width)
+
 
 def draw_rect(x, y, width, height, line_width=0):
     # line_width = 0 for solid rectangle
-    pygame.draw.rect(screen, black, (x-4, y-4, width, height), line_width)
+    pygame.draw.rect(screen, black, (x - 4, y - 4, width, height), line_width)
     pygame.draw.rect(screen, red, (x, y, width, height), line_width)
 
-# init
+
+# main program begins
 pygame.init()
 pygame.display.set_caption("Bomb Catching Game")
 pygame.mouse.set_visible(False)
-screen = pygame.display.set_mode((600,500))
+screen = pygame.display.set_mode((600, 500))
 font1 = pygame.font.Font(None, 24)
 
 lives = 3
@@ -30,9 +32,9 @@ score = 0
 gameOver = False
 
 # colors
-black = 0,0,0
-yellow = 255,255,0
-red = 255,0,0
+black = 0, 0, 0
+yellow = 255, 255, 0
+red = 255, 0, 0
 
 # mouse position
 mouse_x = 0
@@ -42,7 +44,7 @@ move_x = 0
 move_y = 0
 
 # bomb position: x is random value in range(0, 500), 500 is window width
-bomb_x = random.randint(0,500)
+bomb_x = random.randint(0, 500)
 bomb_y = -50
 
 pos_x = 300
@@ -51,13 +53,9 @@ pos_y = 460
 # velocity of bomb
 vel_y = 0.7
 
-
-
-
-
 while True:
     for event in pygame.event.get():
-        if event == QUIT:
+        if event.type == QUIT:
             sys.exit()
         elif event.type == MOUSEMOTION:
             mouse_x, mouse_y = event.pos
@@ -69,11 +67,10 @@ while True:
                 score = 0
 
     keys = pygame.key.get_pressed()
-
     if keys[K_ESCAPE]:
         sys.exit()
 
-    screen.fill((0,100,0))
+    screen.fill((0, 100, 0))
     print_text(font1, 0, 0, "LIVES: " + str(lives))
     print_text(font1, 500, 0, "SCORE: " + str(score))
 
@@ -91,9 +88,8 @@ while True:
         elif bomb_y > pos_y:
             if bomb_x > pos_x and bomb_x < pos_x + 120:
                 score += 10
-                bomb_x = random.randint(0,500)
+                bomb_x = random.randint(0, 500)
                 bomb_y = -50
-
 
     draw_circle(bomb_x, bomb_y, 30)
 
